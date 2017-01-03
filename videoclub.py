@@ -109,7 +109,7 @@ def deliver_movie(user_id, movie_id):
 def get_rental_history():
     sqlq = "SELECT r.id, r.user_id, r.movie_id, u.name, m.title, count(r.id) NRentals,  " \
            "MIN(exitday) AS fromDate, MAX(exitday) AS toDate " \
-           "FROM rentals r" \
+           "FROM rentals r " \
            "JOIN users u ON r.user_id=u.id " \
            "JOIN movies m ON r.movie_id=m.id " \
            "GROUP BY r.user_id, r.movie_id " \
@@ -119,10 +119,3 @@ def get_rental_history():
         print(r)
 
 
-
-def main():
-   create_user('Jerónimo','555 355 555', 'Arriba, 54.')
-
-
-if __name__ == '__main__':
-    main()
